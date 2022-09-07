@@ -25,3 +25,8 @@ fi
 sudo systemctl start neard.service
 
 echo "NEAR node was started" | ts
+
+
+tar -zcvf ${BACKUPDIR}/archive_${DATE}.tar.gz ${BACKUPDIR}/data
+rm -rf ${BACKUPDIR}/data
+find ${BACKUPDIR} -name "*.tar.gz" -type f -mtime +$((60*24)) -delete
